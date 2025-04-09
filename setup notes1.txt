@@ -1,0 +1,44 @@
+vtz admin local
+bmw 
+
+environments
+
+cert test 1
+cert test 2
+
+int - business testing - qa testing 
+
+PROD 
+
+test-e2e for our end to end testing
+
+
+
+
+
+naming convention
+feature or bugfix/
+
+ticket name dpv-number-descriptionofticket.
+
+
+I can deploy my own branch into test1/2
+in order to deploy 
+
+Run CI build feature branch-maven
+Run CD deployment NonProd
+
+For prod deployments:
+1. Run CI major release maven
+2. Run CI Deployment Prod 
+
+
+
+Currently not working:
+CI build milestone, used for: everytime you merge your branch into master.. it should kick off and create a milestone release so that if you merge and everything works,
+but a few merges later it no longer works, we can release the version that was working.. 
+
+CI nightly maven, should run every night and trigger  GITHUB advanced security + Dependabots Updates + perf tests and e2e tests 
+CD Deploy + Run e2e tests currently not working.. 
+CD deploy + Run Perf tests currently not working. 
+

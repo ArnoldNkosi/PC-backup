@@ -1,0 +1,60 @@
+RUNNING E2E TESTS
+
+
+./quarkus-properties.sh 3
+./quarkus-properties.sh 4
+./quarkus-properties.sh 5
+./quarkus-properties.sh 6
+
+
+run-backend-for-test1:
+echo "ENV1 Starting" && cd dpv-war && mvn clean quarkus:dev
+run-backend-for-test2:
+echo "ENV2 Starting" && cd dpv-war && mvn clean quarkus:dev
+run-backend-for-test3:
+echo "ENV3 Starting" && cd dpv-war && mvn clean quarkus:dev
+run-backend-for-test4:
+echo "ENV4 Starting" && cd dpv-war && mvn clean quarkus:dev
+	
+	
+run-single-e2e:
+cd cert-integration && mvn test -Ptest-suite-a &&  mvn surefire-report:report -DskipTests
+test-report:
+cd cert-integration && mvn -DskipTests surefire-report:report && mvn site -DskipTests
+
+
+
+test.env file
+
+
+BMW_SAP_MIGRATE_CERTIFICATES=true
+cert.persistent.file.number=5
+com.bmw.dpv.integrationtest.logout-url=http://localhost:8086/dpv-ng/oauth2/logout
+com.bmw.dpv.integrationtest.server= http://localhost:8086/dpv-ng/?lang=de
+com.bmw.dpv.integrationtest.server.url=http://localhost:8086/
+com.bmw.dpv.integrationtest.user.admin=admin:bmw
+com.bmw.dpv.integrationtest.user.cop=cop:bmw
+com.bmw.dpv.integrationtest.user.dis=
+com.bmw.dpv.integrationtest.user.matrx=
+com.bmw.dpv.integrationtest.user.mtl=mtl:bmw
+com.bmw.dpv.integrationtest.user.qmt=qmt:bmw
+com.bmw.dpv.integrationtest.user.qxu9999=
+com.bmw.dpv.integrationtest.user.reader=leser:bmw
+com.bmw.dpv.integrationtest.user.setl=setl:bmw
+com.bmw.dpv.integrationtest.user.spc=spc:bmw
+com.bmw.dpv.integrationtest.user.spu=spu:bmw
+com.bmw.dpv.integrationtest.user.supplier=lieferant:bmw
+com.bmw.dpv.integrationtest.user.vtf=vtf:bmw
+com.bmw.dpv.integrationtest.user.vtz=vtz:bmw
+com.bmw.dpv.integrationtest.user.wewa=wewa:bmw
+com.bmw.dpv.integrationtest.user.te=te:bmw
+front.auth-server.url=http://localhost:8888/realms/cert-quarkus-migration/protocol/openid-connect/token
+headless=false
+machine.auth-server.url=http://localhost:8888/realms/machine2machine/protocol/openid-connect/token
+quarkus.oidc.authentication.scopes=openid profile
+quarkus.oidc.client-id=quarkus-keycloak-client
+quarkus.oidc.credentials.secret=IWepReQF7z2gWrHUKkGTx1KbsOempNUv
+webdriver.chrome.driver=/Enter/Your/Path/To/chromedriver
+webdriver.edge.driver=C:\\Users\\QXZ4EE9\\webDrivers\\msedgedriver.exe
+headless=true
+driver=edge
